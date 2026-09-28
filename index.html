@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flow Trace</title>
+
+<!-- Home-screen identity (iOS reads these from THIS page, which is why this launcher exists) -->
+<meta name="apple-mobile-web-app-title" content="Flow Trace">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<script>
+  // Your Apps Script web-app URL (the /exec link). Keep it the same by updating the
+  // existing deployment (Manage deployments → Edit → New version), never "New deployment".
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbyG8QnBtbPPqljo9mSi2g3_zlhsegB3VLQtdSChClfGd-ird3AzHWcU9RC5Qf2sGHfl/exec';
+
+  // Opened from the home-screen icon → go straight to the app.
+  // Opened in Safari → stay here so you can use Share → Add to Home Screen.
+  var standalone = window.navigator.standalone === true ||
+    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  if (standalone || /[?&]go=1\b/.test(location.search)) location.replace(APP_URL);
+</script>
+<style>
+  :root { color-scheme: light dark; --ink:#0A192F; --ink2:#334155; --bg:#FFFFFF; --card:#F1F5F9; --line:#E2E8F0; --accent:#EC8E2C; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#FFFFFF; --ink2:#CBD5E1; --bg:#0A192F; --card:#112240; --line:rgba(255,255,255,.08); --accent:#DA822E; } }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;
+         background:var(--bg); color:var(--ink); font:16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { width:100%; max-width:360px; text-align:center; }
+  .icon { width:112px; height:112px; border-radius:26px; box-shadow:0 1px 2px rgba(10,25,47,.08), 0 10px 30px -16px rgba(10,25,47,.4); }
+  h1 { font-size:30px; margin:16px 0 4px; letter-spacing:-.02em; }
+  p { color:var(--ink2); margin:0 0 20px; }
+  .open { display:block; padding:14px; border-radius:14px; background:var(--accent); color:#0A192F; font-weight:600; text-decoration:none; }
+  .steps { margin-top:22px; padding:14px 16px; border:1px solid var(--line); border-radius:14px; background:var(--card); text-align:left; font-size:14.5px; color:var(--ink2); }
+  .steps b { color:var(--ink); }
+  .steps ol { margin:6px 0 0; padding-left:20px; }
+  .share { display:inline-block; vertical-align:-3px; width:16px; height:18px; }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="apple-touch-icon.png" alt="Flow Trace logo" width="112" height="112">
+  <h1>Flow Trace</h1>
+  <p>Your personal finance tracker</p>
+  <a class="open" id="open" href="#">Open Flow Trace</a>
+  <div class="steps" id="iosSteps">
+    <b>Put it on your Home Screen</b>
+    <ol>
+      <li>In Safari, tap Share
+        <svg class="share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></li>
+      <li>Choose <b>Add to Home Screen</b></li>
+      <li>Keep the name <b>Flow Trace</b> and tap <b>Add</b></li>
+    </ol>
+  </div>
+</main>
+<script>
+  document.getElementById('open').href = APP_URL;
+</script>
+</body>
+</html>
